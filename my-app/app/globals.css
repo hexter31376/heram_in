@@ -1,0 +1,109 @@
+/* 공통 스타일 설정 */
+body {
+  margin: 0; /* 전체 페이지의 마진을 없애기 */
+  font-family: 'JetBrains Mono', monospace; /* 전체 페이지의 글꼴을 제트브레인 글씨체로 */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* 반투명 헤더 스타일 설정 */
+header {
+  background: linear-gradient(90deg, #56ab2fcc, #a8e063cc);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 2em;
+  position: relative;
+  z-index: 1;
+}
+
+/* 배너 링크 스타일 설정 */
+.banner_in {
+  text-decoration: none; /* 하이퍼링크 밑줄 제거 */
+  color: inherit; /* 부모 요소의 색상 상속 */
+}
+
+/* 투명 네비게이션 바 스타일 설정 */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 네비게이션 바의 링크 스타일 설정 */
+nav a {
+  text-decoration: none;
+  color: #333; /* 글자 색상을 진한 회색으로 변경 */
+  margin: 0 10px;
+  padding: 10px;
+  position: relative;
+}
+
+/* 링크에 마우스 호버 시 밑줄 효과 */
+nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #56ab2f;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* 링크에 마우스 호버 시 밑줄이 나타나는 애니메이션 */
+nav a:hover::after {
+  width: 100%;
+}
+
+/* 푸터 스타일 설정 */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* 왼쪽 메뉴 스타일 설정 */
+.left-menu {
+  display: flex;
+}
+
+/* 오른쪽 메뉴 스타일 설정 */
+.right-menu {
+  display: flex;
+}
+
+/* 메인 컨텐츠가 flex 속성을 갖도록 설정 */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* list 페이지의 스타일 */
+
+.list-bg {
+  background: rgb(249, 250, 255);
+  padding: 10px;
+}
+.list-item {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 5px;
+  box-shadow: rgb(224, 224, 224) 0px 2px 4px 0px;
+}
+.list-item h4 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+}
+.list-item p {
+  color: grey;
+  margin : 5px 0px;
+}

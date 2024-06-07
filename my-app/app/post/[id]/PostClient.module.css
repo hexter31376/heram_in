@@ -1,0 +1,168 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.title {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.viewer {
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  line-height: 1.6;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.viewer h1 {
+  color: #2c3e50;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #333;
+  padding-bottom: 5px;
+}
+
+.viewer h2 {
+  color: #2c3e50;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 5px;
+}
+
+.viewer h3, .viewer h4, .viewer h5, .viewer h6 {
+  color: #2c3e50;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.viewer p {
+  margin: 10px 0;
+}
+
+.viewer blockquote {
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+  border-left: 5px solid #0070f3;
+}
+
+.viewer ul, .viewer ol {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.viewer li {
+  margin: 5px 0;
+}
+
+.viewer a {
+  color: #0070f3;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.viewer a:hover {
+  color: #005bb5;
+}
+
+.viewer code {
+  background-color: #f1f1f1;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.viewer pre {
+  background-color: #000;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+  color: #fff;
+}
+
+.viewer pre code {
+  display: block;
+  color: inherit;
+  background: none;
+}
+
+.viewer pre code.hljs {
+  padding: 0;
+  background: none;
+}
+
+.viewer img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.viewer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.viewer table th, .viewer table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.viewer table th {
+  background-color: #f9f9f9;
+}
+
+.viewer table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.button:hover {
+  background-color: #005bb5;
+}
+
+.deleteButton {
+  background-color: #d9534f;
+}
+
+.deleteButton:hover {
+  background-color: #c9302c;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.notFound {
+  text-align: center;
+  font-size: 1.5em;
+  color: #d9534f;
+}
