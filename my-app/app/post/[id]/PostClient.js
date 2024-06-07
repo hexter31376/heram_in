@@ -14,13 +14,13 @@ function PostClient({ post }) {
   const shouldReload = searchParams.get('reload') !== 'true';
 
   useEffect(() => {
-    setIsClient(true);
-
-    if (shouldReload) {
-      router.replace(`${window.location.pathname}?reload=true`);
-      window.location.reload();
+    if (!isClient) {
+      setIsClient(true);
+      if (shouldReload) {
+        router.replace(`${window.location.pathname}?reload=true`, undefined, { shallow: true });
+      }
     }
-  }, [shouldReload, router]);
+  }, [shouldReload, isClient, router]);
 
   const handleDelete = async () => {
     const confirmed = confirm('Are you sure you want to delete this post?');
