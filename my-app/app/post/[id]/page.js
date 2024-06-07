@@ -1,8 +1,9 @@
 import clientPromise from '../../../utils/db';
 import { ObjectId } from 'mongodb';
-import PostClient from './PostClient';
+import PostClientWrapper from './PostClient';
 import Link from 'next/link';
 import styles from './PostClient.module.css';
+import React, { Suspense } from 'react';
 
 async function getPost(id) {
   if (!ObjectId.isValid(id)) {
@@ -23,9 +24,16 @@ async function getPost(id) {
   };
 }
 
-export default async function Page({ params }) {
-  const { id } = params;
-  const post = await getPost(id);
+function PostWrapper({ id }) {
+  const [post, setPost] = React.useState(null);
+  
+  React.useEffect(() => {
+    async function fetchData() {
+      const post = await getPost(id);
+      setPost(post);
+    }
+    fetchData();
+  }, [id]);
 
   if (!post) {
     return (
@@ -38,7 +46,17 @@ export default async function Page({ params }) {
     );
   }
 
-  return <PostClient post={post} />;
+  return <PostClientWrapper post={post} />;
+}
+
+export default function Page({ params }) {
+  const { id } = params;
+
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PostWrapper id={id} />
+    </Suspense>
+  );
 }
 
 // 이 함수는 모든 동적 경로를 사전에 생성하는 데 사용됩니다.
