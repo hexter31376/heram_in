@@ -11,8 +11,10 @@ export default function PostWrapper({ id, initialPost }) {
     if (!initialPost) {
       async function fetchData() {
         const response = await fetch(`/api/posts/${id}`);
-        const data = await response.json();
-        setPost(data);
+        if (response.ok) {
+          const data = await response.json();
+          setPost(data);
+        }
         setLoading(false);
       }
       fetchData();

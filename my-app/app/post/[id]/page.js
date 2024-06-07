@@ -27,7 +27,7 @@ async function getPost(id) {
   }
 }
 
-export default async function EditPostPage({ params }) {
+export default async function PostPage({ params }) {
   const { id } = params;
   const post = await getPost(id);
 

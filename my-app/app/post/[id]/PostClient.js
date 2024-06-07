@@ -1,13 +1,13 @@
 "use client";
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import styles from './PostClient.module.css';
 
 const Viewer = dynamic(() => import('@toast-ui/react-editor').then(mod => mod.Viewer), { ssr: false });
 
-export default function PostClient({ post }) {
+function PostClient({ post }) {
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
   const searchParams = useSearchParams();
@@ -52,5 +52,13 @@ export default function PostClient({ post }) {
         <button onClick={handleDelete} className={`${styles.button} ${styles.deleteButton}`}>Delete</button>
       </div>
     </div>
+  );
+}
+
+export default function PostClientWrapper({ post }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PostClient post={post} />
+    </Suspense>
   );
 }
