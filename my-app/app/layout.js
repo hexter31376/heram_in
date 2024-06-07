@@ -29,10 +29,16 @@ export default function RootLayout({ children }) {
           </div>
         </nav>
         <main>
-          { children }
+          {children}
         </main>
         <footer>
-          hello
+          <p>Made by Tiger`jy teem</p>
+          <p className="contact-info">
+            Contact: wonyoungjang(teamleader) <a href="mailto:zwonyoung@gwnu.ac.kr">zwonyoung@gwnu.ac.kr</a>
+          </p>
+          <p>
+            Project Repository: <a href="https://github.com/hexter31376/heram_in" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          </p>
         </footer>
       </body>
     </html>

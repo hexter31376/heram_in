@@ -7,6 +7,10 @@ body {
   height: 100vh;
 }
 
+p {
+  font-size: 8pt;
+}
+
 /* 반투명 헤더 스타일 설정 */
 header {
   background: linear-gradient(90deg, #56ab2fcc, #a8e063cc);
@@ -64,8 +68,30 @@ nav a:hover::after {
 footer {
   background-color: #333;
   color: white;
-  text-align: center;
+  text-align: left;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 2px solid #56ab2f;
+}
+
+footer p {
+  margin: 5px 0;
+  color: #f1f1f1;
+}
+
+footer a {
+  color: #56ab2f;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer .contact-info {
+  margin: 10px 0;
 }
 
 /* 왼쪽 메뉴 스타일 설정 */
@@ -86,11 +112,11 @@ main {
 }
 
 /* list 페이지의 스타일 */
-
 .list-bg {
   background: rgb(249, 250, 255);
   padding: 10px;
 }
+
 .list-item {
   background: white;
   border-radius: 10px;
@@ -98,12 +124,14 @@ main {
   margin-bottom: 5px;
   box-shadow: rgb(224, 224, 224) 0px 2px 4px 0px;
 }
+
 .list-item h4 {
   font-size: 20px;
   font-weight: 800;
   margin: 0;
 }
+
 .list-item p {
   color: grey;
-  margin : 5px 0px;
+  margin: 5px 0px;
 }
