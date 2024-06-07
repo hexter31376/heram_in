@@ -3,19 +3,21 @@
 import { useEffect, useState } from 'react';
 import PostClient from './PostClient';
 
-export default function PostWrapper({ id }) {
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
+export default function PostWrapper({ id, initialPost }) {
+  const [post, setPost] = useState(initialPost);
+  const [loading, setLoading] = useState(!initialPost);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`/api/posts/${id}`);
-      const data = await response.json();
-      setPost(data);
-      setLoading(false);
+    if (!initialPost) {
+      async function fetchData() {
+        const response = await fetch(`/api/posts/${id}`);
+        const data = await response.json();
+        setPost(data);
+        setLoading(false);
+      }
+      fetchData();
     }
-    fetchData();
-  }, [id]);
+  }, [id, initialPost]);
 
   if (loading) {
     return <p>Loading...</p>;

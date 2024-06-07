@@ -1,18 +1,44 @@
-import Link from 'next/link';
-import clientPromise from '../../utils/db';
+"use client";
 
-async function getPosts() {
-  const client = await clientPromise;
-  const db = client.db('forum');
-  const posts = await db.collection('post').find({}).toArray();
-  return posts.map(post => ({
-    ...post,
-    _id: post._id.toString(),
-  }));
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
+async function fetchPosts() {
+  const response = await fetch('/api/posts');
+  if (!response.ok) {
+    throw new Error('Failed to fetch posts');
+  }
+  const data = await response.json();
+  return data;
 }
 
-export default async function ListPage() {
-  const posts = await getPosts();
+export default function ListPage() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function getPosts() {
+      try {
+        const postsData = await fetchPosts();
+        setPosts(postsData);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getPosts();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <div className="list-bg">
       {posts.map((post) => (

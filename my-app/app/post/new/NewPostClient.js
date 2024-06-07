@@ -52,7 +52,8 @@ export default function NewPostClient() {
 
     if (response.ok) {
       alert('새로운 글을 게시했습니다!');
-      router.push('/list'); // 블로그 목록 페이지로 리다이렉트
+      router.push('/list?refresh=true'); // 블로그 목록 페이지로 리다이렉트하면서 쿼리 파라미터 추가
+      window.location.reload(); // 페이지를 새로고침하여 변경 사항 반영
     } else {
       alert('글 게시를 실패했습니다...');
     }

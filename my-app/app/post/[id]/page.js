@@ -35,7 +35,7 @@ export default async function EditPostPage({ params }) {
     return <p>Post not found</p>;
   }
 
-  return <PostWrapper id={id} />;
+  return <PostWrapper id={id} initialPost={post} />;
 }
 
 // 이 함수는 모든 동적 경로를 사전에 생성하는 데 사용됩니다.

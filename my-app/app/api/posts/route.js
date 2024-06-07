@@ -39,3 +39,29 @@ export async function POST(req) {
     },
   });
 }
+
+export async function GET() {
+  try {
+    const client = await clientPromise;
+    const db = client.db('forum');
+    const posts = await db.collection('post').find({}).toArray();
+    const formattedPosts = posts.map(post => ({
+      ...post,
+      _id: post._id.toString(),
+    }));
+    return new Response(JSON.stringify(formattedPosts), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    return new Response(JSON.stringify({ message: 'Internal Server Error' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+}
