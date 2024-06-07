@@ -121,3 +121,46 @@ export async function PUT(req) {
     });
   }
 }
+
+export async function GET(req, { params }) {
+  const { id } = params;
+
+  if (!ObjectId.isValid(id)) {
+    return new Response(JSON.stringify({ message: 'Invalid ID' }), {
+      status: 400,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  try {
+    const client = await clientPromise;
+    const db = client.db('forum');
+    const post = await db.collection('post').findOne({ _id: new ObjectId(id) });
+
+    if (!post) {
+      return new Response(JSON.stringify({ message: 'Post not found' }), {
+        status: 404,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    }
+
+    return new Response(JSON.stringify({ ...post, _id: post._id.toString() }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    return new Response(JSON.stringify({ message: 'Internal Server Error' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+}

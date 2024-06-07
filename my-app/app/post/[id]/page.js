@@ -1,9 +1,7 @@
 import clientPromise from '../../../utils/db';
 import { ObjectId } from 'mongodb';
-import React, { Suspense } from 'react';
-import dynamic from 'next/dynamic';
-
-const PostWrapper = dynamic(() => import('./PostWrapper'), { ssr: false });
+import React from 'react';
+import PostWrapper from './PostWrapper';
 
 async function getPost(id) {
   if (!ObjectId.isValid(id)) {
@@ -37,11 +35,7 @@ export default async function EditPostPage({ params }) {
     return <p>Post not found</p>;
   }
 
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <PostWrapper id={id} />
-    </Suspense>
-  );
+  return <PostWrapper id={id} />;
 }
 
 // 이 함수는 모든 동적 경로를 사전에 생성하는 데 사용됩니다.
